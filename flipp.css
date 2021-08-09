@@ -1,0 +1,140 @@
+    *                                                   
+    {
+        padding:0;
+        margin:0;
+    }
+     body                                               /* body editing */
+    {
+        background: url('./geometry2.png');
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    h1                                                   /*for heading*/
+    {
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-weight: 300;
+        margin-top: 5vh;
+    }
+    h2                                                   /*editing  heading 2*/ 
+    {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-weight: 200;
+        font-size:20px;
+        margin-right:20vw;
+    }
+    .moves                                                /*the moves done*/
+    {
+        size: 20px;
+        font-weight: 200;
+        margin-right: 5px;
+    }
+    .sec                                                  /*stars components */
+    {
+        display: flex;
+        justify-content: center;
+        margin-top: 5vh;
+    }
+    .stars                                              /*stars psoitions*/
+    {
+        margin-right: 10px;
+        margin-top: 2px;
+    }
+    .fa-repeat                                          /*the reset button*/
+    {
+        margin-top: 2px;
+    }
+    .box                                                /*the main bloackof the game*/
+    {
+        width:660px;
+        height:680px;
+        background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+        border-radius: 10px;
+        list-style: none;
+        box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+        margin-left: 22%;            
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        padding:32px;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .card                                            /*each card*/
+    {
+        height: 125px;
+        width: 125px;
+        background: #2e3d49;
+        display: flex;
+        margin: 10px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+        position: relative;
+        transition: transform 1s;
+        transform-style: preserve-3d;
+        cursor:pointer;
+        color: #ffffff;
+    }
+    .flip                                               /*for flipping the card*/
+    {
+        transform: rotateY(180deg);
+    }
+    .redd                                               /*for matched cards*/
+    {
+        
+        animation: kl 0.4s linear 2;
+    }
+    .le                                                 /*for unmatched cards*/
+    {
+        animation:yo 0.5s linear 1;
+    }
+    @keyframes yo                                       /*animation for matched cards*/
+    {
+        0%
+        {
+            transform: scaleY(0.5);
+        }
+        50%
+        {
+            animation-delay: 0.5s;
+            transform: scaleY(1.2);
+        }
+        100%
+        {
+            transform: scaleY(1);
+        }
+    }
+    @keyframes kl                                      /*animation for unmatched cards*/
+    {
+        0%
+        {
+            transform: translateX(-5px);
+        }
+        50%
+        {
+            transform: translateX(5px);
+        }
+        100%{
+            transform: translateX(0px);
+        }
+    }
+    .cardin                                         /*each card flipped side*/
+    {
+        background-color:  #02b3e4;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        font-size: 50px;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        border-radius: 8px;
+        transform: rotateY(180deg);
+    }
+    .h                                                  /*icon position*/
+    {
+        margin-top:30px;
+    }

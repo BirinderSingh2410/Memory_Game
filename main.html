@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <title>PUZZLE TO SOLVE</title>
+                    <!-- title for the page -->
+    <head>
+        <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> 
+                    <!-- uploading the library for icons -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                        <!-- library for java script  -->
+        <link href="./flipp.css" rel="stylesheet">
+                        <!-- css file forthe elements -->
+    </head>
+    <body>
+        <h1>Matching Game</h1>                      
+                        <!-- main heading -->
+        <div class="sec">
+            
+            <div class="moves"></div><h2>Moves</h2>
+            <div class="fa fa-repeat" onclick="re()" ></div>
+        </div>
+                    <!-- block above the main box -->
+         <ul class="box">
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-diamond"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-paper-plane-o"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-anchor"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-bolt"></i>
+                </div>    
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-cube"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-anchor"></i>
+                </div>
+                </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-leaf"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-bicycle"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-diamond"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-bomb"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-leaf"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-bomb"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-bolt"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-bicycle"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-paper-plane-o"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="cardin">
+                    <i class="h fa fa-cube"></i>
+                </div>
+            </li>
+        </ul>
+                    <!-- elements of the box and each card -->
+
+
+
+        <!-- java script -->            
+        <script > 
+            var j = document.querySelectorAll(".card");             /*xselecting all cards*/
+            var l=document.getElementsByClassName("card");
+            var count = 0;                                        /*the number of matched cards*/
+            let move = 0;                                         /*total moves done*/ 
+            document.getElementsByClassName("moves")[0].innerText = move;  
+                                    /*for displaying moves*/
+            var cl = [];            /* that is clicked */
+            var op = [];            /*card that is clicked parent*/
+            let fr=[];                 /*card that is clicked prior parent*/
+            function re()                   /*fn for the reset button*/
+                {
+                    $(".flip").toggleClass("flip");             
+                    move = 0;
+                    $(".moves")[0].innerText = move;
+                    $(".cardin").css("background-color","#02b3e4");
+                }
+            j.forEach(function(l)                       /*main function*/
+            {
+                l.addEventListener( 'click', function(event) 
+                {
+                    document.getElementsByClassName("moves")[0].innerText = move;   
+                    var t = $(".flip").length;
+                        if(count < 2 && t != 16)
+                        { 
+                            $(".redd").toggleClass("redd");
+                            l.classList.add('flip');
+                            let childClass = event.target.children[0].children[0].className;
+                            op[count] = event.target;
+                            fr[count] = event.target.children[0];
+                            let h = childClass.split(' ')[2];
+                            cl[count]=h;
+                            count = count + 1;                  
+                            move = move +1;
+                            if(count == 2)              
+                            {
+                                if(cl[0] == cl[1])            /*if selected cards are matched*/
+                                {
+
+                                    setTimeout(() => {
+                                        $(op[0]).toggleClass('le');
+                                        $(op[1]).toggleClass('le');
+                                        $(fr[0]).css("background-color","#02e499");
+                                        $(fr[1]).css("background-color","#02e499");
+                                        },500);  
+                                }
+                                else        /*if selected cards are unmatched*/
+                                {
+
+                                        setTimeout(() => { 
+                                            $(op[0]).toggleClass("redd");
+                                            $(op[1]).toggleClass("redd"); 
+                                            $(op[0]).toggleClass("flip");
+                                            $(op[1]).toggleClass("flip");     
+                                        },500);
+                                }
+                                count=0;           
+                            }
+                        }
+                        if(t === 15 )               /*if all are matched*/
+                        {
+                            setTimeout(() => window.location.replace('./congo.html'), 1500);
+
+                        }
+                    });
+            });
+        </script>
+    </body>
+</html>
